@@ -15,6 +15,8 @@ df.describe()
 import pandas as pd
 import matplotlib.pyplot as plt
 
+plt.style.use('ggplot')
+
 df  = pd.read_csv("/home/richard/Documents/Python/Statistics/HW/exam3_data.csv")
 # plots all columns against index
 df.plot()  
@@ -29,7 +31,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-sns.set(style="darkgrid")
+plt.style.use('ggplot')
 
 df = pd.read_csv('/home/richard/Documents/Python/Statistics/HW/exam3_data.csv') 
 sns.pairplot(df, kind="scatter", diag_kind='auto', hue="Treatment")
