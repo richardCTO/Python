@@ -342,5 +342,37 @@ r_squared = 1 - (float(SS_Residual))/SS_Total
 adjusted_r_squared = 1 - (1-r_squared)*(len(Y)-1)/(len(Y)-X.shape[1]-1)
 print (" R^2", r_squared, "Adjusted R^2", adjusted_r_squared)
 
+# %%
+from sklearn.neural_network import MLPClassifier
+mlp = MLPClassifier(solver='adam', alpha=0.5, 
+                    hidden_layer_sizes=(5, 5), random_state=5)
+
+mlp.fit(X_train, Y_train)
+y_pred4 = mlp.predict(X_test)
+print("Accuracy", metrics.accuracy_score(Y_test, y_pred4))
+
+# Print R^2 and adjusted R^2
+yhat = mlp.predict(X)
+SS_Residual = sum((Y-yhat)**2)
+SS_Total = sum((Y-np.mean(Y))**2)
+r_squared = 1 - (float(SS_Residual))/SS_Total
+adjusted_r_squared = 1 - (1-r_squared)*(len(Y)-1)/(len(Y)-X.shape[1]-1)
+print (" R^2", r_squared, "Adjusted R^2", adjusted_r_squared)
+
+# %%
+from sklearn.svm import SVC
+
+svm = SVC(gamma='auto')
+svm.fit(X_train, Y_train)
+y_pred5 = svm.predict(X_test)
+print("Accuracy", metrics.accuracy_score(Y_test, y_pred5))
+
+# Print R^2 and adjusted R^2
+yhat = svm.predict(X)
+SS_Residual = sum((Y-yhat)**2)
+SS_Total = sum((Y-np.mean(Y))**2)
+r_squared = 1 - (float(SS_Residual))/SS_Total
+adjusted_r_squared = 1 - (1-r_squared)*(len(Y)-1)/(len(Y)-X.shape[1]-1)
+print (" R^2", r_squared, "Adjusted R^2", adjusted_r_squared)
 
 # %%
