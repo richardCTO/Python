@@ -3,7 +3,7 @@
 import pandas as pd
 import numpy as np
 
-d = pd.read_csv("exam3_data.csv")
+d = pd.read_csv("/home/richard/Documents/Python/Statistics/HW/exam3_data.csv")
 df = pd.DataFrame(d)
 df
 
@@ -15,7 +15,7 @@ df.describe()
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df  = pd.read_csv("exam3_data.csv")
+df  = pd.read_csv("/home/richard/Documents/Python/Statistics/HW/exam3_data.csv")
 # plots all columns against index
 df.plot()  
 
@@ -31,7 +31,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set(style="darkgrid")
 
-df = pd.read_csv('exam3_data.csv') 
+df = pd.read_csv('/home/richard/Documents/Python/Statistics/HW/exam3_data.csv') 
 sns.pairplot(df, kind="scatter", diag_kind='auto', hue="Treatment")
 plt.show()
 
@@ -50,7 +50,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 import statsmodels.api as sm
 
-data = pd.read_csv("exam3_data.csv")
+data = pd.read_csv("/home/richard/Documents/Python/Statistics/HW/exam3_data.csv")
 data.head()
 
 # Plotting linear regression
@@ -76,7 +76,7 @@ print("The linear model is: Y = {:.5} + {:.5}X".format(reg.intercept_[0], reg.co
 
 # %%
 #Anova
-data = pd.read_csv("exam3_data.csv")
+data = pd.read_csv("/home/richard/Documents/Python/Statistics/HW/exam3_data.csv")
 
 X = data['Age']
 y = data['Tumor_Size']
@@ -97,7 +97,7 @@ from sklearn import preprocessing, svm
 from sklearn.model_selection import train_test_split 
 from sklearn.linear_model import LinearRegression 
 
-df = pd.read_csv('exam3_data.csv') 
+df = pd.read_csv('/home/richard/Documents/Python/Statistics/HW/exam3_data.csv') 
 df_binary = df[['Age', 'Tumor_Size']] 
 
 # Taking only the selected two attributes from the dataset
@@ -268,7 +268,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import metrics
 from sklearn.linear_model import LogisticRegression
 
-df1 = pd.read_csv('exam3_data.csv')
+df1 = pd.read_csv('/home/richard/Documents/Python/Statistics/HW/exam3_data.csv')
 X = df1.drop("Race", axis = 1)
 Y = df1["Race"]
 
