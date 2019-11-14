@@ -1,7 +1,7 @@
 #%%
 import pandas as pd 
 
-df = pd.read_csv('Workshop/pulsar_stars.csv')
+df = pd.read_csv('Modeling/pulsar_stars.csv')
 df.head()
 
 # %%
@@ -22,10 +22,6 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2
 import numpy as np
 from sklearn import metrics
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import Ridge
-from yellowbrick.datasets import load_concrete
-from yellowbrick.regressor import ResidualsPlot
 
 clf = LogisticRegression()
 
@@ -40,17 +36,6 @@ SS_Total = sum((Y-np.mean(Y))**2)
 r_squared = 1 - (float(SS_Residual))/SS_Total
 adjusted_r_squared = 1 - (1-r_squared)*(len(Y)-1)/(len(Y)-X.shape[1]-1)
 print (" R^2", r_squared, "Adjusted R^2", adjusted_r_squared)
-
-# Residual Plot
-# Create the train and test data
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
-
-# Instantiate the linear model and visualizer
-visualizer = ResidualsPlot(clf)
-
-visualizer.fit(X_train, Y_train)  # Fit the training data to the visualizer
-visualizer.score(X_test, Y_test)  # Evaluate the model on the test data
-visualizer.show() 
 
 # %%
 metrics.confusion_matrix(Y_test, y_pred)
@@ -142,15 +127,4 @@ r_squared = 1 - (float(SS_Residual))/SS_Total
 adjusted_r_squared = 1 - (1-r_squared)*(len(Y)-1)/(len(Y)-X.shape[1]-1)
 print (" R^2", r_squared, "Adjusted R^2", adjusted_r_squared)
 
-# Residual Plot
-# Create the train and test data
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
-
-# Instantiate the linear model and visualizer
-
-visualizer = ResidualsPlot(svm)
-
-visualizer.fit(X_train, Y_train)  # Fit the training data to the visualizer
-visualizer.score(X_test, Y_test)  # Evaluate the model on the test data
-visualizer.show() 
 # %%
