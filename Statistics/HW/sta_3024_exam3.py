@@ -404,7 +404,7 @@ from yellowbrick.datasets import load_concrete
 from yellowbrick.regressor import ResidualsPlot
 
 # Load a regression dataset
-df1 = pd.read_csv('/home/richard/Documents/Python/Statistics/HW/exam3_data.csv')
+df1 = pd.read_csv('Statistics/HW/exam3_data.csv')
 X = df1.drop("Race", axis = 1)
 Y = df1["Race"]
 
