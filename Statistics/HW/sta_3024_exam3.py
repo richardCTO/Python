@@ -8,7 +8,9 @@ df = pd.DataFrame(d)
 df
 
 #Print Descriptive Statistics summary
-df.describe()
+print(df.describe())
+print(df.corr())
+print(df.cov())
 
 # %%
 #Scatter plots
@@ -19,7 +21,16 @@ plt.style.use('ggplot')
 
 df  = pd.read_csv("/home/richard/Documents/Python/Statistics/HW/exam3_data.csv")
 # plots all columns against index
-df.plot()  
+df.plot() 
+ 
+#%%
+import seaborn as sns
+
+# Show the pair plots
+plt.style.use('ggplot')
+
+sns.pairplot(df[['Race','Age','Treatment','Tumors_Count','Duration','Tumor_Size','Censor']]);
+
 
 #%%
 # scatter plot
@@ -178,7 +189,7 @@ X = np.array(df_binary100['Age']).reshape(-1, 1)
 y = np.array(df_binary100['Tumor_Size']).reshape(-1, 1)
   
 df_binary100.dropna(inplace = True) 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25) 
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2) 
   
 regr = LinearRegression() 
 regr.fit(X_train, y_train) 
@@ -194,12 +205,18 @@ plt.plot(X_test, y_pred, color ='y')
 plt.show()
 
 #%%
+visualizer = ResidualsPlot(regr)
+
+visualizer.fit(X_train, y_train)  # Fit the training data to the visualizer
+visualizer.score(X_test, y_test)  # Evaluate the model on the test data
+visualizer.show() 
+#%%
 # compute R^2 and adjusted R^2 with 
 # statsmodels, by adding intercept manually
 import statsmodels.api as sm
 X1 = sm.add_constant(X)
 result = sm.OLS(y, X1).fit()
-result.summary()
+print(result.summary())
 
 # %%
 # R squared and adjusted r squared using 
@@ -212,12 +229,6 @@ r2_score(X_test, y_pred)
 r2_adjusted = sm.OLS(X_test, y_pred)
 show_r2_adjusted = r2_adjusted.fit()
 show_r2_adjusted.summary()
-
-# %%
-# Show the pair plots
-plt.style.use('ggplot')
-
-sns.pairplot(df[['Race','Age','Treatment','Tumors_Count','Duration','Tumor_Size','Censor']]);
 
 # %%
 # Testing out the logistic model
@@ -342,6 +353,9 @@ r_squared = 1 - (float(SS_Residual))/SS_Total
 adjusted_r_squared = 1 - (1-r_squared)*(len(Y)-1)/(len(Y)-X.shape[1]-1)
 print (" R^2", r_squared, "Adjusted R^2", adjusted_r_squared)
 
+print("MSE", mean_squared_error(Y_test, y_pred3))
+
+
 # %%
 from sklearn.neural_network import MLPClassifier
 mlp = MLPClassifier(solver='adam', alpha=0.5, 
@@ -359,8 +373,13 @@ r_squared = 1 - (float(SS_Residual))/SS_Total
 adjusted_r_squared = 1 - (1-r_squared)*(len(Y)-1)/(len(Y)-X.shape[1]-1)
 print (" R^2", r_squared, "Adjusted R^2", adjusted_r_squared)
 
+print("MSE", mean_squared_error(Y_test, y_pred4))
+
+
 # %%
 from sklearn.svm import SVC
+from sklearn.metrics import mean_squared_error
+
 
 svm = SVC(gamma='auto')
 svm.fit(X_train, Y_train)
@@ -374,5 +393,30 @@ SS_Total = sum((Y-np.mean(Y))**2)
 r_squared = 1 - (float(SS_Residual))/SS_Total
 adjusted_r_squared = 1 - (1-r_squared)*(len(Y)-1)/(len(Y)-X.shape[1]-1)
 print (" R^2", r_squared, "Adjusted R^2", adjusted_r_squared)
+
+print("MSE", mean_squared_error(Y_test, y_pred5))
+
+
+# %%
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import Ridge
+from yellowbrick.datasets import load_concrete
+from yellowbrick.regressor import ResidualsPlot
+
+# Load a regression dataset
+df1 = pd.read_csv('/home/richard/Documents/Python/Statistics/HW/exam3_data.csv')
+X = df1.drop("Race", axis = 1)
+Y = df1["Race"]
+
+# Create the train and test data
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
+
+# Instantiate the linear model and visualizer
+model = Ridge()
+visualizer = ResidualsPlot(model)
+
+visualizer.fit(X_train, y_train)  # Fit the training data to the visualizer
+visualizer.score(X_test, y_test)  # Evaluate the model on the test data
+visualizer.show() 
 
 # %%
