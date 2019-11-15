@@ -4,9 +4,17 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # import data set and print first 10 lines
-nba_file_path = pd.read_csv('DataVisualization/nba-players-data/all_seasons.csv')
+nba_file_path = pd.read_csv('DataVisualization/nba-players-data/all_seasons.csv', index_col=0)
 nba_data = pd.DataFrame(nba_file_path)
 nba_data.head(n = 10)
+
+#%%
+# Check data types and if any records are missing
+nba_data.info()
+
+#%%
+# Descriptive statistics for the data set
+nba_data.describe()
 
 # %%
 df_binary = nba_data[['player_height', 'pts']] 
@@ -21,7 +29,11 @@ df_binary.head(n = 10)
 plt.style.use('ggplot')
 
 # Plot players_height vs pts with a regression line
-sns.lmplot(x ="players_height", y ="pts", data = df_binary, order = 2, ci = None, 
-           size=10) 
+sns.lmplot(x ="players_height", y ="pts", data = df_binary, size=10) 
+
+plt.ylabel('Height (cm)')
+plt.xlabel('Points Scored')
+
+plt.show()
 
 # %%
