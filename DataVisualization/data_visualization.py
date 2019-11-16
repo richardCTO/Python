@@ -25,12 +25,15 @@ df_binary.columns = ['players_height', 'pts']
 df_binary.head(n = 10)
 
 #%%
+import seaborn as sns
+sns.set()
 # makes the graphs look pretty :)
 plt.style.use('ggplot')
 
 # Plot players_height vs pts with a regression line
 sns.lmplot(x ="players_height", y ="pts", data = df_binary, size=10) 
 
+plt.title("Height vs Points Scored")
 plt.ylabel('Height (cm)')
 plt.xlabel('Points Scored')
 
