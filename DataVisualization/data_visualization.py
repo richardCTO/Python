@@ -40,3 +40,5 @@ plt.xlabel('Points Scored')
 plt.show()
 
 # %%
+# Data training
+from sklearn.model_selection import train_test_split
