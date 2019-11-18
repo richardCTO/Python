@@ -11,9 +11,10 @@ import seaborn as sns
 sns.heatmap(df.corr())
 
 # %%
+import numpy as np
 from sklearn.model_selection import train_test_split
-X = df.drop("target_class", axis = 1)
-Y = df["target_class"]
+X = np.array(df.drop("target_class", axis = 1))
+Y = np.array(df["target_class"])
 
 # 20% training and 80% test
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2
