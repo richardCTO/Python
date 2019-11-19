@@ -1,6 +1,11 @@
 #%%
 import numpy
 
+# x, y data values
+# Change these arrays for each answer
+x = [1, 2, 3, 4, 5, 6]
+y = [4, 3, 2, 9, 15, 28]
+
 # Function to find coeficent b, coeficent a
 # and Coeficent of determinatoin R-squared
 def polyfit(x, y, degree):
@@ -23,14 +28,12 @@ def polyfit(x, y, degree):
 
     return results
 
-x = [1, 2, 3, 4, 5, 6]
-y = [4, 3, 2, 9, 15, 28]
-
-print(polyfit(x, y, 1))
+print(polyfit( x, y, 1))
 
 #Find Correlation Coeficent, r
 correlation_coeficent = numpy.corrcoef(x, y)
- 
+
+# Print Correlation Coefficient r
 print('Correlation Coefficient ', correlation_coeficent)
 
 # %%
