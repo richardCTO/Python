@@ -40,5 +40,28 @@ plt.xlabel('Points Scored')
 plt.show()
 
 # %%
+
 # Data training
+import numpy as np 
 from sklearn.model_selection import train_test_split
+
+X = np.array(nba_data.drop(columns= ['player_name' ,'team_abbreviation','college', 'season',
+                            'country', 'draft_year', 'draft_round','draft_number'], axis=1))
+y = np.array(nba_data['pts'])
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.8)
+df_binary.dropna(inplace = True) 
+
+# %%
+#Linear Regression model
+import numpy as np 
+from sklearn import metrics
+from sklearn.linear_model import LinearRegression
+
+lreg = LinearRegression()
+
+lreg.fit(X_train, y_train)
+y_pred = lreg.predict(X_test)
+
+print("Accuracy", metrics.accuracy_score(y, y_pred))
+
+# %%
