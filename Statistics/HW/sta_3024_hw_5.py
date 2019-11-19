@@ -25,15 +25,15 @@ def polyfit(x, y, degree):
     ssreg = numpy.sum((yhat-ybar)**2)   # or sum([ (yihat - ybar)**2 for yihat in yhat])
     sstot = numpy.sum((y - ybar)**2)    # or sum([ (yi - ybar)**2 for yi in y])
     results['determination'] = ssreg / sstot
-
+    
     return results
 
-print(polyfit( x, y, 1))
+print('First value is coeficent b, second is coeficent a', polyfit(x, y, 1))
 
 #Find Correlation Coeficent, r
 correlation_coeficent = numpy.corrcoef(x, y)
 
 # Print Correlation Coefficient r
-print('Correlation Coefficient ', correlation_coeficent)
+print('Correlation Coefficient: ', correlation_coeficent)
 
 # %%
