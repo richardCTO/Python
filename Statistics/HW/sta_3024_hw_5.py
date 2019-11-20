@@ -3,8 +3,8 @@ import numpy
 
 # x, y data values
 # Change these arrays for each answer
-x = [1, 2, 3, 4, 5, 6]
-y = [4, 3, 2, 9, 15, 28]
+x = [43, 21, 25, 42, 57, 59]
+y = [99, 65, 79, 75, 87, 81]
 
 # Function to find coeficent b, coeficent a
 # and Coeficent of determinatoin R-squared
@@ -24,7 +24,7 @@ def polyfit(x, y, degree):
     ybar = numpy.sum(y)/len(y)          # or sum(y)/len(y)
     ssreg = numpy.sum((yhat-ybar)**2)   # or sum([ (yihat - ybar)**2 for yihat in yhat])
     sstot = numpy.sum((y - ybar)**2)    # or sum([ (yi - ybar)**2 for yi in y])
-    results['determination'] = ssreg / sstot
+    results['determination R^2'] = ssreg / sstot
     
     return results
 
@@ -34,6 +34,6 @@ print('First value is coeficent b, second is coeficent a', polyfit(x, y, 1))
 correlation_coeficent = numpy.corrcoef(x, y)
 
 # Print Correlation Coefficient r
-print('Correlation Coefficient: ', correlation_coeficent)
+print('Correlation Coefficient r: ', correlation_coeficent)
 
 # %%
