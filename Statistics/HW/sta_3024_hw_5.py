@@ -1,4 +1,5 @@
 #%%
+# Simple program to find a and b coefficient given data
 import numpy
 
 # x, y data values
@@ -6,8 +7,8 @@ import numpy
 x = [43, 21, 25, 42, 57, 59]
 y = [99, 65, 79, 75, 87, 81]
 
-# Function to find coeficent b, coeficent a
-# and Coeficent of determinatoin R-squared
+# Function to find coefficient b, coefficient a
+# and Coefficient of determinatoin R-squared
 def polyfit(x, y, degree):
     
     results = {}
@@ -28,12 +29,12 @@ def polyfit(x, y, degree):
     
     return results
 
-print('First value is coeficent b, second is coeficent a', polyfit(x, y, 1))
+print('First value is coefficient b, second is coefficient a', polyfit(x, y, 1))
 
-#Find Correlation Coeficent, r
-correlation_coeficent = numpy.corrcoef(x, y)
+#Find Correlation Coefficient, r
+correlation_coefficient = numpy.corrcoef(x, y)
 
 # Print Correlation Coefficient r
-print('Correlation Coefficient r: ', correlation_coeficent)
+print('Correlation Coefficient r: ', correlation_coefficient)
 
 # %%
