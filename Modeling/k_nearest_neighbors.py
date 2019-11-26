@@ -17,3 +17,23 @@ df.replace('?', -99999, inplace=True)
 df.drop(['id'], 1, inplace=True)
 
 # %%
+
+
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn import metrics
+
+import numpy as np
+from sklearn.model_selection import train_test_split
+X = np.array(df.drop("class", axis = 1))
+Y = np.array(df["class"])
+
+# 20% training and 80% test
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2
+                                                    , random_state = 42)
+
+knn = KNeighborsClassifier(n_neighbors=4)
+knn.fit(X_train, Y_train)
+y_pred1 = knn.predict(X_test)
+print("Accuracy", metrics.accuracy_score(Y_test, y_pred1))
+
+# %%
