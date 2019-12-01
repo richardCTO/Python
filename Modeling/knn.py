@@ -2,10 +2,11 @@
 import numpy as np
 from collections import Counter
 
+# calculation for kkn using euclidean
 def euclidean_distance(x1, x2):
     np.sqrt(np.sum((x1-x2)**2))
     
-# K nearest neighbor
+# K nearest neighbor from scratch 
 class KNN:
     def __init__(self, k=3):
         self.k = k
