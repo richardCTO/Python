@@ -15,7 +15,6 @@ class KNN:
         self.X_train = X 
         self.y_train = y
         
-    
     def predict(self, x):
         predicted_labels = [self._predict(x) for x in X]
         return np.array(predicted_labels)
@@ -30,4 +29,5 @@ class KNN:
         
         # majority vote
         most_common = Counter(k_nearest_labels).most_common(1)
+        return most_common[0][0]
         
