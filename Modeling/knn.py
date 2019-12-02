@@ -12,7 +12,7 @@ class KNN:
         self.k = k
         
     def fit(self, x, y):
-        self.X_train = X 
+        self.X_train = x 
         self.y_train = y
         
     def predict(self, x):
