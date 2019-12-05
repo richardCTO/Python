@@ -41,3 +41,11 @@ X_test, y_test = get_arrays(df_test)
 X_train.shape, y_train.shape
 
 # %%
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+
+pipeline = make_pipeline(
+    StandardScaler(),
+    LogisticRegression()
+)
