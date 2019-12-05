@@ -49,3 +49,8 @@ pipeline = make_pipeline(
     StandardScaler(),
     LogisticRegression()
 )
+
+# %%
+# train and predict
+model = pipeline.fit(X_train, y_train)
+model.predict(X_train)[:5]
