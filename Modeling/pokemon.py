@@ -54,3 +54,10 @@ pipeline = make_pipeline(
 # train and predict
 model = pipeline.fit(X_train, y_train)
 model.predict(X_train)[:5]
+
+# %%
+from sklearn.metrics import confusion_matrix
+
+confusion_matrix(y_train, model.predict(X_train))
+
+# %%
