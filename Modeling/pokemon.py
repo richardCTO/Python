@@ -56,11 +56,13 @@ model = pipeline.fit(X_train, y_train)
 model.predict(X_train)[:5]
 
 # %%
+# confusion matrix
 from sklearn.metrics import confusion_matrix
 
 confusion_matrix(y_train, model.predict(X_train))
 
 # %%
+# accuracy score
 from sklearn.metrics import roc_auc_score
 
 roc_auc_score(y_train, model.predict(X_train))
