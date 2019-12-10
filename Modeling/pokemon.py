@@ -68,3 +68,18 @@ from sklearn.metrics import roc_auc_score
 roc_auc_score(y_train, model.predict(X_train))
 
 # %%
+from sklearn.model_selection import cross_val_score
+from sklearn.metrics import make_scorer
+
+def cross_validate_auc(pipeline, X_train, y_train):
+    results = cross_val_score(
+        pipeline,
+        X_train,
+        y_train,
+        scoring=make_scorer(roc_auc_score),
+        cv=10,
+    )
+
+    return np.mean(results)
+    
+cross_validate_auc(pipeline, X_train, y_train)
