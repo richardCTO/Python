@@ -23,3 +23,6 @@ import matplotlib.pyplot as plt
 num_bins = 5
 n, bins, patches = plt.hist(x, num_bins, facecolor='blue', alpha=0.5)
 plt.show()
+
+
+# %%
