@@ -5,3 +5,9 @@ df = pd.read_csv('/home/richard/Documents/Python/Statistics/HW/Data/ClassSurvey.
 df.head()
 
 # %%
+# Correlation heatmap
+import seaborn as sns
+
+sns.heatmap(df.corr())
+
+# %%
