@@ -26,3 +26,8 @@ plt.show()
 
 
 # %%
+import statistics
+
+x1 = [7.625, 7.500, 6.625, 7.625, 6.625, 6.875, 7.375, 5.375, 7.500]
+
+statistics.stdev(x1)
