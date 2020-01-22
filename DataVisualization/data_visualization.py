@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # import data set and print first 10 lines
-nba_file_path = pd.read_csv('DataVisualization/nba-players-data/all_seasons.csv', index_col=0)
+nba_file_path = pd.read_csv('/home/richard/Documents/Python/DataVisualization/nba-players-data/all_seasons.csv'
+, index_col=0)
 nba_data = pd.DataFrame(nba_file_path)
 nba_data.head(n = 10)
 
