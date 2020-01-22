@@ -11,3 +11,4 @@ import seaborn as sns
 sns.heatmap(df.corr())
 
 # %%
+import numpy as np
